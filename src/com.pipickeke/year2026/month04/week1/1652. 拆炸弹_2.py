@@ -1,5 +1,4 @@
 """
-
 1652. 拆炸弹
 
 你有一个炸弹需要拆除，时间紧迫！你的情报员会给你一个长度为 n 的 循环 数组 code 以及一个密钥 k 。
@@ -18,16 +17,14 @@ from typing import List
 
 
 class Solution:
-    def decrypt(self, code: List[int], k: int)->List[int]:
+    def decrypt(self, code:List[int], k: int)->List[int]:
         n = len(code)
-        r = k+1 if k > 0 else n
+        r = k+1 if k>0 else n
         k = abs(k)
         s = sum(code[r-k:r])
-
         ans = [0]*n
         for i in range(n):
             ans[i] = s
             s += code[r % n] - code[(r-k) % n]
             r += 1
         return ans
-
